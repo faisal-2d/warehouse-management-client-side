@@ -25,7 +25,7 @@ const LoadItems = () => {
 
       <div>
         <Link to="/manageItems">
-          <button className="btn btn-secondary p-3">Manage Inventories</button>
+          <button className="my-3 btn btn-secondary p-3">Manage Inventories</button>
         </Link>
       </div>
     </div>

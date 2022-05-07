@@ -9,7 +9,7 @@ import Login from './Components/Login/Login';
 import ManageItems from './Components/ManageItems/ManageItems';
 import MyItems from './Components/MyItems/MyItems';
 import NotFound from './Components/NotFound/NotFound';
-import SignIn from './Components/SignIn/SignIn';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path='/additem' element={<AddItem></AddItem>}></Route>               
         <Route path='/myitems' element={<MyItems></MyItems>}></Route>               
         <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/signin' element={<SignIn></SignIn>}></Route>
+        <Route path='/signin' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>      

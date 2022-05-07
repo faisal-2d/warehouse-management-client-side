@@ -54,13 +54,16 @@ const Details = () => {
   return (
     <div className='min-vh-100 container'>
       <h2>Update Information</h2>
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="d-flex justify-content-evenly align-items-center">
         <div>
           <img src={item.img} alt="" />
         </div>
         <div className="text-start">
           <p>Product id : {id}</p>
           <h4>{item.name}</h4>
+          <h5>Price: {item.price} $</h5>
+          <p>Supplier: {item.supplier}</p>          
+          <p>Sold: {item.sold}</p>          
           <p>Current Quantity: {item.quantity}</p>
           <button className="btn btn-primary" onClick={deleverOne}>Delivered</button>
 

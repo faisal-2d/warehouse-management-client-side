@@ -31,7 +31,7 @@ const ManageItems = () => {
       </div>
 
       <div>
-        <Link to='/additem'><button className="btn btn-warning p-3">
+        <Link to='/additem'><button className="my-3 btn btn-warning p-3">
           + Add New Item
         </button></Link>
       </div>
