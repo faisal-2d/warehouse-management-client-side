@@ -28,10 +28,13 @@ const Login = () => {
             Login
           </Button>
           <span className="ms-3">
-            Don't have an account?{" "}
-            <Link to='/signin'><button className="btn btn-link">Sign Up</button></Link>
+            <Link to=''><button className="btn text-danger btn-link">Forgot Password?</button></Link>
           </span>
         </Form>
+        <div className="mt-5">
+            Don't have an account?{" "}
+            <Link to='/signin'><button className="btn btn-link">Sign Up</button></Link>
+          </div>
       </div>
     </div>
   );

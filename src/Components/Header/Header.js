@@ -26,11 +26,11 @@ const Header = () => {
       <Nav.Link as={Link} to="/home">Home</Nav.Link>
       <Nav.Link as={Link} to="/manageitems">Manage Items</Nav.Link>
     <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
+    <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
       </Nav>
       <Nav className="ms-auto">
     <Nav.Link as={Link} to="/manageitems">Manage Items</Nav.Link>
     <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
-    <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
     <Nav.Link as={Link} to="/login">Login</Nav.Link>
     <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
     </Nav>
