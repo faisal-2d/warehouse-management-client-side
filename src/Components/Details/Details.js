@@ -1,41 +1,81 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 const Details = () => {
-    const {id} = useParams();
-    const [item, setItem] = useState({});
-    const [quantity, setQuantity] = useState(item.quantity);
+  const { id } = useParams();
+  const [item, setItem] = useState({});
+  const [updated, setUpdated] = useState(false);
 
-    useEffect(() => {        
-        axios.get(`http://localhost:5000/item/${id}`)
-        .then((data) => setItem(data.data));
-      }, []);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/item/${id}`)
+      .then((data) => setItem(data.data));
+  }, [updated]);
+
+  const deleverOne = () => {
+    if(Number(item.quantity)>0){        
+   item.quantity = (Number(item.quantity) - 1);
+   updateQuantity();
+}
+     
+  };
 
 
-      console.log(item);
-      const deleverOne = id => {
-          console.log(id, "is being delivered");
-         const currentQuantity = Number(item.quantity) -1;
-         console.log(currentQuantity);
-         
-      }
-    return (
+
+  const handleReStock = e => {
+      e.preventDefault();
+      if(Number(item.quantity)){        
+        item.quantity = (Number(item.quantity) + Number(e.target.quantity.value));
+        updateQuantity();
+        e.target.reset();
+  }
+}
+
+  const updateQuantity = async () => {
+    const updatedData = {
+        description: item.description,
+        img: item.img,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        sold: item.sold,
+        supplier:item.supplier
+      };
+      
+        await axios
+          .put(`http://localhost:5000/item/${id}`, updatedData)
+          .then((data) => console.log('Quantity changed ',data.data));
+          setUpdated(!updated);
+    }
+      
+  
+  return (
+    <div className='min-vh-100 container'>
+      <h2>Update Information</h2>
+      <div className="d-flex justify-content-center align-items-center">
         <div>
-            <h2>Update Information</h2>
-            <div>
-                <div>
-<img src={item.img} alt="" />
-                </div>
-                <div>
-                <p>Details info {id}</p>
-                <h4>{item.name}</h4>
-                <p>Current Quantity: {item.quantity}</p>
-            <button onClick={()=>deleverOne(id)}>Delivered</button>
-                </div>
-            </div>
+          <img src={item.img} alt="" />
         </div>
-    );
+        <div className="text-start">
+          <p>Product id : {id}</p>
+          <h4>{item.name}</h4>
+          <p>Current Quantity: {item.quantity}</p>
+          <button className="btn btn-primary" onClick={deleverOne}>Delivered</button>
+
+
+
+          <Form className="mt-4 d-flex" onSubmit={handleReStock}>
+          <Form.Group className="me-2 " controlId="exampleForm.ControlInput5">
+              <Form.Control type="text" name="quantity" placeholder="Insert Quantity" required/>
+            </Form.Group>
+            <button className='btn btn-warning' type="submit">Restock</button>
+          </Form>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Details;

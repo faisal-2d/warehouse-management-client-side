@@ -20,7 +20,7 @@ const LoadItem = ({ product, deleteItem }) => {
           <p className="card-text">Supplier: {product.supplier}</p>
         </div>
         <div>
-          <Link to={`/item/${product._id}`}><button className="btn btn-success mb-3 w-100">Update</button></Link>
+          <Link to={`/inventory/${product._id}`}><button className="btn btn-success mb-3 w-100">Update</button></Link>
         </div>
       </div>
     </div>
