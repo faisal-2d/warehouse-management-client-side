@@ -9,7 +9,7 @@ const Header = () => {
 
 <Navbar bg="dark" variant="dark" expand="lg">
   <Container>
-  <Navbar.Brand to="/home">
+  <Navbar.Brand as={Link} to="/home">
         <img
           alt=""
           src={logo}
@@ -23,16 +23,16 @@ const Header = () => {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-      <Nav.Link to="/home">Home</Nav.Link>
-      <Nav.Link to="/manageitems">Manage Items</Nav.Link>
-    <Nav.Link to="/additem">Add Item</Nav.Link>
+      <Nav.Link as={Link} to="/home">Home</Nav.Link>
+      <Nav.Link as={Link} to="/manageitems">Manage Items</Nav.Link>
+    <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
       </Nav>
       <Nav className="ms-auto">
-    <Nav.Link to="/manageitems">Manage Items</Nav.Link>
-    <Nav.Link to="/additem">Add Item</Nav.Link>
-    <Nav.Link to="/myitems">My items</Nav.Link>
-    <Nav.Link to="/login">Login</Nav.Link>
-    <Nav.Link to="/logout">Logout</Nav.Link>
+    <Nav.Link as={Link} to="/manageitems">Manage Items</Nav.Link>
+    <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
+    <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
+    <Nav.Link as={Link} to="/login">Login</Nav.Link>
+    <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
     </Nav>
     </Navbar.Collapse>
   </Container>

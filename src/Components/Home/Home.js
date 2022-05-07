@@ -1,9 +1,11 @@
 import React from 'react';
+import LoadItems from '../LoadItems/LoadItems';
 
 const Home = () => {
     return (
-        <div className='min-vh-100'>
+        <div className='min-vh-100 container'>
             <h1>Welcome to Warehouse</h1>
+            <LoadItems></LoadItems>
             <div>
                 extra section 1
             </div>
