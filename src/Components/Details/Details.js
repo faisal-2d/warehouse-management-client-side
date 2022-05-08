@@ -64,6 +64,7 @@ const Details = () => {
           <h5>Price: {item.price} $</h5>
           <p>Supplier: {item.supplier}</p>          
           <p>Sold: {item.sold}</p>          
+          {/* <p>Added By: {(item.addedby)?item.addedby:'Admin'}</p> */}
           <p>Current Quantity: {item.quantity}</p>
           <button className="btn btn-primary" onClick={deleverOne}>Delivered</button>
 

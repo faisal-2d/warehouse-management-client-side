@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Spinner } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
-
+    const [user, loading, error] = useAuthState(auth);
     
   const handleOnSubmit = e => { 
     e.preventDefault();
-    console.log("is it Coming?", e.target.name.value);  
  const data = {
      name: e.target.name.value,
      description: e.target.description.value,
@@ -16,6 +17,7 @@ const AddItem = () => {
       sold: "0",
       supplier: e.target.supplier.value,
       img: e.target.img.value,
+      addedby: user.email,
   } 
         axios.post('http://localhost:5000/item',data)
         .then(response => console.log(response.data.id)); 
@@ -49,6 +51,7 @@ const AddItem = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
               <Form.Control type="text" name="img" placeholder="Image URL" required/>
             </Form.Group>
+            <p className='text-start'>Item added by: <span className='text-primary'>{user?.email}</span></p>
             <button className='btn btn-warning' type="submit">Submit</button>
           </Form>
         </div>

@@ -1,32 +1,52 @@
+import { async } from '@firebase/util';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
 
 const SignUp = () => {
-    return (
+const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+
+  const onSubmitCreateUser = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    createUserWithEmailAndPassword(email, password);   
+      
+  }
+
+ 
+      return (
         <div className='min-vh-100'>
             <h5>Please sign in with</h5>
             <div className="w-25 mx-auto text-start mb-3">
-        {/* social log in */}
+        
         <div>
           <SocialLogIn></SocialLogIn>
         </div>
         <div className="text-center my-3">
           <p> or </p>
         </div>
-        <Form>
+        <Form onSubmit={onSubmitCreateUser}>
           <Form.Group className="mb-3" controlId="formGroupName">
             <Form.Label>Full Name</Form.Label>
-            <Form.Control type="text" placeholder="Your Full Name" />
+            <Form.Control type="text" name='name' placeholder="Your Full Name" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" name='email' placeholder="Enter email" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" name='password' placeholder="Password" />
           </Form.Group>
           <Button variant="primary" type="submit">
             Sign Up
