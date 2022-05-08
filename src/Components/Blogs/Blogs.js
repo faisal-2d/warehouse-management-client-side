@@ -4,7 +4,7 @@ const Blogs = () => {
   return (
     <div className="text-start">
       <div className="container my-5">
-        <article>
+        <article className="mb-4">
           <h3>What is difference between javascript and nodejs?</h3>
           <table className="table">
             <thead>
@@ -26,7 +26,7 @@ Javascript is a programming language that is used for writing scripts on the web
             </tbody>
           </table>
         </article>
-        <article>
+        <article className="mb-4">
           <h3>
           When should you use nodejs and when should you use mongodb?
           </h3>
@@ -35,7 +35,7 @@ Javascript is a programming language that is used for writing scripts on the web
 on the other hand, Mongodb is a No-SQL database. It stores data. It provides high availability of data with automatic, fast, and instant data recovery.
           </p>
         </article>
-        <article>
+        <article className="mb-4">
           <h3>What are the differences between SQL and noSQL databases?</h3>
           <table className="table">
             <thead>
