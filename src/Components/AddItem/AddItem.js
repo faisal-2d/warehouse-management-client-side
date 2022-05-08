@@ -4,6 +4,7 @@ import { Form, Spinner } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
+
 const AddItem = () => {
     const [user, loading, error] = useAuthState(auth);
     
@@ -24,6 +25,13 @@ const AddItem = () => {
         e.target.reset();
       
   };
+  if (loading) {
+    return (
+        <div className="text-center my-5">
+            <Spinner animation="border" variant="primary" />
+        </div>
+    );
+  }
     return (
         <div className='container w-50'>
             <h3>Welcome to add item</h3>

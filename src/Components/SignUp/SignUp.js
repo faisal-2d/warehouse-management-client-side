@@ -1,6 +1,6 @@
 import { async } from '@firebase/util';
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -22,7 +22,13 @@ const [
     createUserWithEmailAndPassword(email, password);   
       
   }
-
+  if (loading) {
+    return (
+        <div className="text-center my-5">
+            <Spinner animation="border" variant="primary" />
+        </div>
+    );
+  }
  
       return (
         <div className='min-vh-100'>

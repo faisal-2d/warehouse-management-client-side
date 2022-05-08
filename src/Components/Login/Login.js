@@ -1,6 +1,6 @@
 import { async } from "@firebase/util";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
@@ -22,6 +22,14 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
   };
+
+  if (loading) {
+    return (
+        <div className="text-center my-5">
+            <Spinner animation="border" variant="primary" />
+        </div>
+    );
+  }
 
   return (
     <div className="min-vh-100">

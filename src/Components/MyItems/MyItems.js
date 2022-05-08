@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Spinner, Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import MyItem from "../MyItem/MyItem";
@@ -26,6 +26,14 @@ const MyItems = () => {
     .delete(`http://localhost:5000/item/${id}`)
     .then(() => console.log({ status: "Delete successful" }));
 };
+
+if (loading) {
+    return (
+        <div className="text-center my-5">
+            <Spinner animation="border" variant="primary" />
+        </div>
+    );
+  }
   return (
     <div>
       <h1>welcome to my items {myItems?.length}</h1>

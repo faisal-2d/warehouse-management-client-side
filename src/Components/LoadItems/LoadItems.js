@@ -14,6 +14,8 @@ const LoadItems = () => {
     setProducts(loadProducts?.slice(0, 6));
   }, [loadProducts]);
 
+  
+
   return (
     <div className="container">
       <h2>Thiss is manage items {products?.length}</h2>
