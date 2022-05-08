@@ -13,8 +13,7 @@ const Home = () => {
         </div>
       </div>
       <LoadItems></LoadItems>
-      <div>extra section 1</div>
-      <div>extra section 2</div>
+      
     </div>
   );
 };
