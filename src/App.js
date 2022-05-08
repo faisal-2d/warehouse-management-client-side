@@ -9,6 +9,7 @@ import Login from './Components/Login/Login';
 import ManageItems from './Components/ManageItems/ManageItems';
 import MyItems from './Components/MyItems/MyItems';
 import NotFound from './Components/NotFound/NotFound';
+import ReqiureAuth from './Components/RequireAuth/ReqiureAuth';
 import SignUp from './Components/SignUp/SignUp';
 
 function App() {
@@ -18,10 +19,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/inventory/:id' element={<Details></Details>}></Route>
-        <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>  
-        <Route path='/additem' element={<AddItem></AddItem>}></Route>               
-        <Route path='/myitems' element={<MyItems></MyItems>}></Route>               
+        <Route path='/inventory/:id' element={<ReqiureAuth><Details></Details></ReqiureAuth>}></Route>
+        <Route path='/manageitems' element={<ReqiureAuth><ManageItems></ManageItems></ReqiureAuth>}></Route>  
+        <Route path='/additem' element={<ReqiureAuth><AddItem></AddItem></ReqiureAuth>}></Route>               
+        <Route path='/myitems' element={<ReqiureAuth><MyItems></MyItems></ReqiureAuth>}></Route>               
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signin' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

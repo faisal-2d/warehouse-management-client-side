@@ -1,18 +1,21 @@
 import { async } from "@firebase/util";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import {
+  useAuthState,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogIn from "../SocialLogIn/SocialLogIn";
 
 const Login = () => {
+  const [emailUser, emailLoading, emailError] = useAuthState(auth);
+  
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, googleUser, googleLoading, googleError] =
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, Rsending, Rerror] =
@@ -23,7 +26,17 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  if (loading) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (emailUser || googleUser) {
+      navigate(from, { replace: true });
+    }
+  }, [emailUser,googleUser]);
+
+  if (emailLoading || googleLoading) {
     return (
         <div className="text-center my-5">
             <Spinner animation="border" variant="primary" />
