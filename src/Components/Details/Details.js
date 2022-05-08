@@ -10,7 +10,7 @@ const Details = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/item/${id}`)
+      .get(`https://fierce-falls-28183.herokuapp.com/item/${id}`)
       .then((data) => setItem(data.data));
   }, [updated]);
 
@@ -45,7 +45,7 @@ const Details = () => {
       };
       
         await axios
-          .put(`http://localhost:5000/item/${id}`, updatedData)
+          .put(`https://fierce-falls-28183.herokuapp.com/item/${id}`, updatedData)
           .then((data) => console.log('Quantity changed ',data.data));
           setUpdated(!updated);
     }

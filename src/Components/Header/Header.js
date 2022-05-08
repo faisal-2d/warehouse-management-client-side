@@ -33,12 +33,17 @@ const Header = () => {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
       <Nav.Link as={Link} to="/home">Home</Nav.Link>
-      <Nav.Link as={Link} to="/manageitems">Manage Items</Nav.Link>
-    <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
-    <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
+      <Nav.Link as={Link} to="/blogs">Blog</Nav.Link>
       </Nav>
       <Nav className="ms-auto">    
-    {user ? <span className="d-flex align-items-center"><span className="text-light">{user?.displayName}</span><Nav.Link onClick={logout}>Logout</Nav.Link></span>  :
+    {user ?
+    <>
+      <Nav.Link as={Link} to="/manageitems">Manage Items</Nav.Link>
+    <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
+    <Nav.Link as={Link} to="/myitems">My items</Nav.Link>    
+      <Nav.Link onClick={logout}>Logout</Nav.Link>      
+      </>
+      :
     <Nav.Link as={Link} to="/login">Login</Nav.Link>
     }
     </Nav>

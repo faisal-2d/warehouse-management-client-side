@@ -7,7 +7,7 @@ const ManageItems = () => {
   const [products, setProducts] = useState([]);
  
   useEffect(() => {
-    axios.get("http://localhost:5000/items")
+    axios.get("https://fierce-falls-28183.herokuapp.com/items")
     .then((data) => setProducts(data.data));
   }, []);
 
@@ -15,15 +15,14 @@ const ManageItems = () => {
       const newProducts = products.filter(item => item._id !== id);
       setProducts(newProducts);
     axios
-      .delete(`http://localhost:5000/item/${id}`)
+      .delete(`https://fierce-falls-28183.herokuapp.com/item/${id}`)
       .then(() => console.log({ status: "Delete successful" }));
   };
 
 
 
   return (
-    <div className="container">
-      <h2>Thiss is manage items {products?.length}</h2>
+    <div className="container my-4">
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {products.map((product) => (
           <ManageItem key={product._id} product={product} deleteItem={deleteItem}></ManageItem>

@@ -15,7 +15,7 @@ const MyItems = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/addedby/${email}`)
+      .get(`https://fierce-falls-28183.herokuapp.com/addedby/${email}`)
       .then((data) => setMyItems(data.data));
   }, [user]);
 
@@ -23,7 +23,7 @@ const MyItems = () => {
     const newProducts = myItems.filter(item => item._id !== id);
     setMyItems(newProducts);
   axios
-    .delete(`http://localhost:5000/item/${id}`)
+    .delete(`https://fierce-falls-28183.herokuapp.com/item/${id}`)
     .then(() => console.log({ status: "Delete successful" }));
 };
 
@@ -35,8 +35,8 @@ if (loading) {
     );
   }
   return (
-    <div>
-      <h1>welcome to my items {myItems?.length}</h1>
+    <div className="container my-3 min-vh-100">
+      <h1>You've added {myItems?.length} item(s)</h1>
 
       <div className="container">
         <Table responsive>

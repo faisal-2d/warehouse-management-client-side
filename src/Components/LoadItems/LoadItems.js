@@ -9,7 +9,7 @@ const LoadItems = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/items")
+      .get("https://fierce-falls-28183.herokuapp.com/items")
       .then((data) => setLoadProducts(data.data));
     setProducts(loadProducts?.slice(0, 6));
   }, [loadProducts]);
@@ -18,7 +18,6 @@ const LoadItems = () => {
 
   return (
     <div className="container">
-      <h2>Thiss is manage items {products?.length}</h2>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {products.map((product) => (
           <LoadItem key={product._id} product={product}></LoadItem>

@@ -1,8 +1,7 @@
-import { async } from '@firebase/util';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
 
@@ -12,16 +11,27 @@ const [
     user,
     loading,
     error,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true });
 
-
-  const onSubmitCreateUser = async (e) => {
+ 
+  const onSubmitCreateUser = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    createUserWithEmailAndPassword(email, password);   
-      
+    createUserWithEmailAndPassword(email, password);  
+
   }
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user]);
+
   if (loading) {
     return (
         <div className="text-center my-5">

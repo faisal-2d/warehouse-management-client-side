@@ -20,7 +20,7 @@ const AddItem = () => {
       img: e.target.img.value,
       addedby: user.email,
   } 
-        axios.post('http://localhost:5000/item',data)
+        axios.post('https://fierce-falls-28183.herokuapp.com/item',data)
         .then(response => console.log(response.data.id)); 
         e.target.reset();
       
@@ -34,7 +34,7 @@ const AddItem = () => {
   }
     return (
         <div className='container w-50'>
-            <h3>Welcome to add item</h3>
+            <h3>App a new item!</h3>
             <Form onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Control type="text" name="name" placeholder="Item Name" autoFocus required/>
